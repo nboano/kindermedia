@@ -1,0 +1,214 @@
+﻿<html>
+<head>
+    <title>Kindermedia - Video Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script async src="JS/file.js"></script>
+    <script async src="JS/scriptvid.js"></script>
+    <script src="JS/crypto.min.js"></script>
+    <script src="JS/hls.js"></script>
+    <script>
+        function viewVideo(id, ep = null, img = null, slug = null) {
+            var url;
+            url = "https://" + BASEURL + "/watch/" + id;
+            if (ep)
+                url += "?e=" + ep;
+            cors_file_get_contents(url).then(function (t) {
+                var doc = new DOMParser().parseFromString(t, "text/html");
+                var datiVideo = JSON.parse(doc.querySelector("video-player").getAttribute("response"));
+                console.log(datiVideo);
+                var nomeProg = datiVideo.title.original_name;
+                var stagione = null, episodio = null, info = null, titoloEp = null, desc;
+                var titoloVisualizzato;
+                document.title = nomeProg;
+                if (datiVideo.season) {
+                    stagione = datiVideo.season.number;
+                    episodio = datiVideo.episode.number;
+                    titoloEp = datiVideo.episode.name;
+                    desc = datiVideo.episode.plot;
+                    titoloVisualizzato = titoloEp;
+                } else {
+                    titoloVisualizzato = nomeProg;
+                    desc = datiVideo.title.plot;
+                }
+                //document.getElementById("divVideo").innerHTML = "<h1>" + titoloVisualizzato + "</h1>";
+                if (episodio) {
+                    //document.getElementById("divVideo").innerHTML += "<b>" + nomeProg + "</b> - " + stagione + "x" + episodio;
+                }
+                //document.getElementById("divVideo").innerHTML += "<hr><br>" + desc;
+                var res;
+                var infoVid, pathBaseVideo, m3u8;
+                let idvid = datiVideo.scws_id;
+                cors_file_get_contents("http://" + hostInfo + "/videos/" + idvid).then(function (t) {
+                    infoVid = JSON.parse(t);
+                    console.log(infoVid);
+                    var tipo = infoVid.cdn.type;
+                    var numProxy = infoVid.cdn.proxies[infoVid.proxy_index].number;
+                    var host = infoVid.host;
+                    res = infoVid.quality;
+                    if (res == 1080) {
+                        res = 720;
+                    }
+                    var folder = infoVid.folder_id;
+                    pathBaseVideo = "https://sc-" + tipo + "1-ZZ." + host + "/hls/" + infoVid.storage.number + "/" + folder;
+                    //console.log(pathBaseVideo);
+                    var expire = new Date(Date.now() + 36e5 * 48).getTime();
+                    var ip = infoVid["client_ip"];
+                    var tokenbase = "Yc8U6r8KjAKAepEA";
+                    var s = (expire = String(Math.round(expire / 1e3))) + ip + " " + tokenbase;
+                    console.log(s);
+                    var token = CryptoJS.MD5(s).toString(CryptoJS.enc.Base64).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+                    console.log(token);
+                    cors_file_get_contents("http://" + hostInfo + "/master/" + idvid + "?token=" + token + "&expires=" + expire).then(function (t) {
+                        var m3u8inizialeArr = t.split("\n");
+                        console.log(m3u8inizialeArr);
+                        var r;
+                        var i = 0;
+                        while (m3u8inizialeArr[i].indexOf("m3u8") == -1 || m3u8inizialeArr[i].indexOf("video") == -1 && i < m3u8inizialeArr.length - 1)
+                            i++;
+                        r = m3u8inizialeArr[i].split("/");
+                        var pathVideo, tipo;
+                        if (infoVid.legacy) {
+                            tipo = "video";
+                            res = r[1];
+                            pathVideo = "/";
+                        }
+                        else {
+                            tipo = r[1];
+                            //tipo = "video";
+                            res = r[2];
+                            pathVideo = "/" + r[1] + "/" + r[2] + "/";
+                        }
+                        cors_file_get_contents("http://" + hostInfo + "/master/" + idvid + "?type=" + tipo + "&rendition=" + res + "&token=" + token + "&expires=" + expire).then(function (t) {
+                            var indexProxy = infoVid.proxy_index;
+                            var righem3u8 = t.split("\n");
+                            m3u8 = "";
+                            for (var i = 0; i < righem3u8.length; i++) {
+                                if (indexProxy == infoVid.cdn.proxies.length)
+                                    indexProxy = 0;
+                                if (righem3u8[i].indexOf("#EXT-X-KEY") !== -1)
+                                    righem3u8[i] = righem3u8[i].replace("/storage/enc.key", "https://www.mb-srv.tk/cors-anywhere/" + hostInfo + "/storage/enc.key");
+                                if (righem3u8[i].indexOf(".ts") !== -1) {
+                                    righem3u8[i] = pathBaseVideo.replace("ZZ", String(infoVid.cdn.proxies[indexProxy].number).padStart(2, 0)) + pathVideo + righem3u8[i];
+                                    indexProxy++;
+                                }
+                                m3u8 += righem3u8[i] + "\n";
+                            }
+                            m3u8 = "data:application/x-mpegURL;base64," + btoa(m3u8);
+                            var downloadFileName = nomeProg.replace(/ /g, "_");
+                            var eventualeEp = "";
+                            if (datiVideo.season) {
+                                downloadFileName += "_S" + stagione + "_E" + episodio;
+                                eventualeEp = stagione + "." + episodio;
+                            }
+                            downloadFileName += "_kinderMedia.m3u8";
+                            //document.getElementById("boxInfo").innerHTML = "<b><a href='javascript:viewTitleInfo(" + id + ",\"" + slug + "\")'>TORNA INDIETRO</a> <b>" + nomeProg + "</b> " + eventualeEp + "<br><a href='" + m3u8 + "' download='" + downloadFileName + "'>SCARICA M3U8 ASSOCIATO</a></b> ";
+                            //document.getElementById("divVideo").innerHTML = "<video id='videoPlayer' controls preload playsinline></video>";
+                            var video = document.getElementById('videoPlayer');
+                            var alb;
+                            if (stagione !== null) {
+                                alb = stagione + "." + episodio;
+                            } else
+                                alb = "KINDERMEDIA";
+                            //if ('mediaSession' in navigator) {
+                            //    navigator.mediaSession.metadata = new MediaMetadata({
+                            //        title: titoloVisualizzato,
+                            //        artist: nomeProg,
+                            //        album: alb,
+                            //        artwork: [{
+                            //            src: imgURL
+                            //        }]
+                            //    });
+                            //}
+                            if (img) {
+                                video.poster = img;
+                            }
+                            if (Hls.isSupported()) {
+                                var hls = new Hls({
+                                    debug: false,
+                                });
+                                hls.loadSource(m3u8);
+                                hls.attachMedia(video);
+                                hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+                                    video.muted = false;
+                                    video.play();
+                                });
+                            }
+                            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                                video.src = m3u8;
+                                video.addEventListener('canplay', function () {
+                                    video.play();
+                                });
+                            }
+                            video.onended = function () {
+                                //if (datiVideo.next_episode) {
+                                //    var nextEp = datiVideo.next_episode.split("watch/")[1];
+                                //    var nextEpId = nextEp.split("?e=")[0];
+                                //    var nextEpEp = nextEp.split("?e=")[1];
+                                //    document.getElementById("boxInfo").innerHTML = "Attendi qualche secondo... il prossimo episodio partir� tra poco."
+                                //    setTimeout(viewVideo(nextEpId, nextEpEp, img, slug), 3000);
+                                //} else {
+                                //    viewTitleInfo(id, slug);
+                                //}
+                            }
+                        });
+                    });
+                });
+            });
+        }
+        function viewAnime(id, ep = null) {
+            var url;
+            url = "https://www.animeunity.tv/anime/" + id + "-a-b-c";
+            if (ep)
+                url += "/" + ep;
+            cors_file_get_contents(url).then(function (t) {
+                var doc = new DOMParser().parseFromString(t, "text/html");
+                var datiVideo = JSON.parse(doc.querySelector("video-player").getAttribute("episode"));
+                var url = datiVideo.link;
+                document.querySelector("video").src = url;
+                document.querySelector("video").play();
+            });
+        }
+        window.onload = () => {
+            let url = new URL(location.href);
+            let params = new URLSearchParams(url.search);
+            if (params.has("id")) {
+                let id = params.get('id');
+                let ep = params.get('ep');
+                viewVideo(id, ep);
+            } else if (params.has("anime-id")) {
+                viewAnime(params.get("anime-id"), params.get("anime-ep"));
+            }
+
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            background: black;
+        }
+
+        #videoPlayer {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        button#chiudi {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <video id="videoPlayer" autoplay controls playsinline></video>
+    <button onclick="window.close()" id="chiudi">X</button>
+</body>
+</html>

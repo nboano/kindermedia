@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="it-IT">
+<head>
+	<meta charset="utf-8">
+	<title>KinderMedia - Home</title>
+	<link rel="stylesheet" href="CSS/style.css">
+    <script async src="JS/file.js"></script>
+	<script async src="JS/scriptvid.js"></script>
+	<script async src="JS/giornali.js"></script>
+	<script src="JS/main.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<link rel="manifest" href="manifest.json">
+	<meta name="description" content="Sito di streaming dove trovare film, serie tv, radio e musica, gratis e senza pubblicità" />
+	<meta name="keywords" content="streaming,sito,video,film,serie,gratis,film e serie, film gratis, serie tv, serie tv gratis, streaming gratis, streaming gratuito, senza limiti, senza pubblicita, radio gratis, musica gratis, musica, streaming musica, streaming senza limiti, film e serie gratis, cerca film, cerca serie, tv, rds, streamingcommunity" />
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="black">
+	<link rel="icon" href="IMG/Icon-16.png">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="KinderMedia">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-startup-image" sizes="256x256" href="IMG/Icon-256.png" media="all">
+	<link rel="apple-touch-icon" sizes="16x16" href="IMG/Icon-16.png">
+	<link rel="apple-touch-icon" sizes="48x48" href="IMG/Icon-48.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="IMG/Icon-72.png">
+	<link rel="apple-touch-icon" sizes="128x128" href="IMG/Icon-128.png">
+	<link rel="apple-touch-icon" sizes="196x196" href="IMG/Icon-196.png">
+	<link rel="apple-touch-icon" sizes="256x256" href="IMG/Icon-256.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="IMG/Icon-512.png">
+</head>
+<body>
+	<header>
+        <div style="padding: 10px 20px;">
+            <img style="display: block; float: left; height: 5vh; margin-right: 25px;" src="IMG/Icon-128.png" /><h1>KinderMedia 5</h1>
+        </div>
+	</header>
+    <main>
+		<section id="home">
+			<h2>Benvenuto su Kindermedia!</h2>
+			<h3>Esplora le varie sezioni:</h3>
+			<br /><br />
+				<ul>
+				<li><a href="#vid-cerca-.homepage">FILM / SERIE TV / ANIME</a></li>
+				<li><a href="#musica">MUSICA</a></li>
+				<li><a href="#radio">RADIO</a></li>
+				<li><a href="javascript:void(0)" onclick="location.hash = '#giornali-data-' + new Date().toISOString().split('T')[0].replaceAll('-', '');">GIORNALI</a></li>
+				<li>
+					<b>Esplora le vecchie versioni:</b>
+					<ul style="margin-left: 25px;">
+						<li><a href="https://www.mb-srv.tk/kindermedia-old/4.2">v 4.2 </a> - MAR 22 / APR 22</li>
+						<li><a href="https://www.mb-srv.tk/kindermedia-old/3.0">v 3.0 </a> - FEB 22 / MAR 22</li>
+						<li><a href="https://www.mb-srv.tk/kindermedia-old/2.0">v 2.0 </a> - DIC 21 / GEN 22</li>
+					</ul>
+				</li>
+				</ul>
+		</section>
+		<section id="vid-cerca-">
+			<h3 style="margin-left: 15px;">Ricerca video</h3><br />
+			<form action="" onsubmit="event.preventDefault();location.hash = '#vid-cerca-' + encodeURIComponent(this.query.value); return false;" class="ricerca-vid">
+				<input type="text" name="query" value="" placeholder="Cerca Film/Serie/Anime..." />
+				<button type="submit">Cerca!</button>
+			</form>
+			<br /><br />
+		</section>
+		<section id="vid-inf-">
+			
+		</section>
+		<section id="giornali-data-">
+			<h3 style="margin-left: 15px;">Ricerca giornali</h3><br />
+			<form action="" onsubmit="event.preventDefault();location.hash = '#giornali-data-' + encodeURIComponent(this.data.value.replaceAll('-', '')); return false;" class="ricerca-vid">
+				<input type="date" name="data" value="" />
+				<button type="submit">Cerca</button>
+			</form>
+			<br /><br />
+		</section>
+		<section id="radio">
+			La radio non &egrave; ancora disponibile in questa versione. Per usufruirne, ritorna alla versione 4.
+		</section>
+        <section id="musica">
+			La musica non &egrave; ancora disponibile in questa versione. Per usufruirne, ritorna alla versione 4.
+		</section>
+		<section id="utente">
+			UTENTE OSPITE
+		</section>
+		<section id="impostazioni">
+			IMPOSTAZIONI
+		</section>
+	</main>
+	<footer>
+		<a href="#home">
+			<img src="IMG/Icon-48.png" style="border-radius: 3px;" />
+			<br />
+			HOME
+		</a>
+		<a href="#vid-cerca-.homepage">
+			<img src="IMG/icona_film_basso.png" />
+			<br />
+			FILM/SERIE
+		</a>
+		<a href="#musica">
+			<img src="IMG/icona_musica_basso.png" />
+			<br />
+			MUSICA
+		</a>
+		<a href="#">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</a>
+		<a href="#utente">
+			<img src="IMG/icona_utente.png" />
+			<br />
+			UTENTE
+		</a>
+		<a href="#impostazioni">
+			<img src="IMG/settings_icon.png" />
+			<br />
+			IMPOST
+		</a>
+	</footer>
+	<dialog id="iconaCaricam" style="background-color: transparent;">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+			<circle cx="40" cy="50" fill="#e50914" r="10">
+				<animate attributeName="cx" repeatCount="indefinite" dur="1s" keyTimes="0;0.5;1" values="40;60;40" begin="-0.5s"></animate>
+			</circle>
+			<circle cx="60" cy="50" fill="#221f1f" r="10">
+				<animate attributeName="cx" repeatCount="indefinite" dur="1s" keyTimes="0;0.5;1" values="40;60;40" begin="0s"></animate>
+			</circle>
+			<circle cx="40" cy="50" fill="#e50914" r="10">
+				<animate attributeName="cx" repeatCount="indefinite" dur="1s" keyTimes="0;0.5;1" values="40;60;40" begin="-0.5s"></animate>
+				<animate attributeName="fill-opacity" values="0;0;1;1" calcMode="discrete" keyTimes="0;0.499;0.5;1" dur="1s" repeatCount="indefinite"></animate>
+			</circle>
+		</svg>
+	</dialog>
+	<div style="display: none;">
+		<!-- Inizio Codice ShinyStat -->
+		<script type="text/javascript" src="//codice.shinystat.com/cgi-bin/getcod.cgi?USER=SS-43351755-2a768"></script>
+		<noscript>
+			<a href="https://www.shinystat.com/it/" target="_top">
+				<img src="//www.shinystat.com/cgi-bin/shinystat.cgi?USER=SS-43351755-2a768" alt="Statistiche accessi" style="border:0px" />
+			</a>
+		</noscript>
+		<!-- Fine Codice ShinyStat -->
+	</div>
+</body>
+</html>
+		

@@ -1,0 +1,61 @@
+{
+  "short_name": "KinderMedia 5",
+  "name": "KinderMedia 5",
+  "icons": [
+    {
+      "src": "IMG/Icon-16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "IMG/Icon-48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "IMG/Icon-72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "IMG/Icon-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "IMG/Icon-196.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#222222",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "black",
+  "lang": "it-IT",
+  "orientation": "portrait",
+  "shortcuts": [
+    {
+      "name": "HOME",
+      "url": "/#home",
+      "description": "Home del sito"
+    },
+    {
+      "name": "FILM - SERIE - ANIME",
+      "url": "/#vid-cerca-.homepage",
+      "description": "Film, serie TV e Anime in streaming"
+    },
+    {
+      "name": "RADIO",
+      "url": "/#radio",
+      "description": "Radio italiane in streaming"
+    },
+    {
+      "name": "MUSICA",
+      "url": "/#musica",
+      "description": "Musica in streaming"
+    }
+  ],
+  "description": "KinderMedia - Film, serie TV, anime, radio, musica e molto altro!"
+}

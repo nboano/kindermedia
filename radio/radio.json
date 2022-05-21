@@ -1,0 +1,127 @@
+[
+  {
+    "name": "RDS",
+    "stream": "http://stream1.rds.it:8000/rds64k",
+    "img": "https://emmepress.com/wp-content/uploads/2017/11/logo-rds.png"
+  },
+  {
+    "name": "RDS (HQ)",
+    "stream": "http://icstream.rds.radio/rds",
+    "img": "https://emmepress.com/wp-content/uploads/2017/11/logo-rds.png"
+  },
+  {
+    "name": "RADIO 105",
+    "stream": "http://icy.unitedradio.it/Radio105.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/it/0/01/105.png"
+  },
+  {
+    "name": "RTL 102.5",
+    "stream": "http://streamingv2.shoutcast.com/rtl-1025",
+    "img": "https://upload.wikimedia.org/wikipedia/it/thumb/2/25/RTL_102_5_logo.svg/1200px-RTL_102_5_logo.svg.png"
+  },
+  {
+    "name": "RADIO ZETA",
+    "stream": "http://relay1.hirschmilch.de:7100/chillout.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Radio_Zeta_-_Logo_2020.svg/1200px-Radio_Zeta_-_Logo_2020.svg.png"
+  },
+  {
+    "name": "RADIO FANTASTICA",
+    "stream": "http://46.105.114.57:8006/stream2",
+    "img": "https://www.fastmediasnc.it/wp-content/uploads/2020/12/FANTASTICA.png"
+  },
+  {
+    "name": "R101",
+    "stream": "http://icecast.unitedradio.it/r101",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/R101_-_Logo_2015.svg/1200px-R101_-_Logo_2015.svg.png"
+  },
+  {
+    "name": "RADIO KISS KISS",
+    "stream": "http://wma08.fluidstream.net:3608/;",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_Radio_Kiss_Kiss.png"
+  },
+  {
+    "name": "RAI RADIO 1",
+    "stream": "http://icestreaming.rai.it/1.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Rai_Radio_1_-_Logo_2017.svg/1200px-Rai_Radio_1_-_Logo_2017.svg.png"
+  },
+  {
+    "name": "RAI RADIO 2",
+    "stream": "http://icestreaming.rai.it/2.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rai_Radio_2_-_Logo_2017.svg/1920px-Rai_Radio_2_-_Logo_2017.svg.png"
+  },
+  {
+    "name": "RAI RADIO 3",
+    "stream": "http://icestreaming.rai.it/3.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rai_Radio_3_-_Logo_2017.svg/1920px-Rai_Radio_3_-_Logo_2017.svg.png"
+  },
+  {
+    "name": "RAI ISORADIO",
+    "stream": "http://icestreaming.rai.it/6.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Rai_Isoradio_-_Logo_2017.svg/1200px-Rai_Isoradio_-_Logo_2017.svg.png"
+  },
+  {
+    "name": "RAI GR PARLAMENTO",
+    "stream": "http://icestreaming.rai.it/7.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Rai_Gr_Parlamento_-_Logo_2017.svg/1280px-Rai_Gr_Parlamento_-_Logo_2017.svg.png"
+  },
+  {
+    "name": "RAI RADIO TUTTA ITALIANA",
+    "stream": "http://icestreaming.rai.it/4.mp3",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Rai_Radio_Tutta_Italiana_logo.svg/1920px-Rai_Radio_Tutta_Italiana_logo.svg.png"
+  },
+  {
+    "name": "RADIO SPORTIVA",
+    "stream": "http://46.105.114.57:8000/stream",
+    "img": "https://upload.wikimedia.org/wikipedia/it/d/d3/RadioSportiva.png"
+  },
+  {
+    "name": "RADIO ALBA",
+    "stream": "http://nr2.newradio.it:8274/stream",
+    "img": "https://www.tuttonormale.com/assets/images/radio-alba-1920x1080.png"
+  },
+  {
+    "name": "RADIO MANILA",
+    "stream": "http://stream15.top-ix.org:8000/radiomanila",
+    "img": "https://www.radiomanila.it/wp-content/uploads/2021/06/logo-piccolo.png"
+  },
+  {
+    "name": "RADIO VALBELBO",
+    "stream": "http://nr9.newradio.it/proxy/vallebelbo?mp=/stream",
+    "img": "https://festivalieve.com/partners/radio-vallebelbo-logo.png"
+  },
+  {
+    "name": "RADIO PIEMONTE SOUND",
+    "stream": "http://dreamsiteradiocp3.com:8054/;",
+    "img": "http://cdn-radiotime-logos.tunein.com/s94964q.png"
+  },
+  {
+    "name": "RADIO MONDO",
+    "stream": "http://s3.shoutitaly.com:8045/;",
+    "img": "https://www.radiomondo.it/wp-content/uploads/2015/06/LogoRadioMondo-SeiTu-Trasp.png"
+  },
+  {
+    "name": "RADIO ALFA CANAVESE",
+    "stream": "http://stream15.top-ix.org/radioalfacanavese",
+    "img": "https://www.radioalfacanavese.it/wp-content/uploads/2021/02/alfa_favicon.png"
+  },
+  {
+    "name": "RADIO GRP",
+    "stream": "http://onair15.xdevel.com:8092/;",
+    "img": "https://www.radiogrp.it/wp-content/uploads/2015/10/online_grp.png"
+  },
+  {
+    "name": "RADIO NOSTALGIA",
+    "stream": "http://rn1.fluidstream.eu/nostalgia_pv.aac",
+    "img": "https://nostalgia.it/wp-content/uploads/2019/12/logo-nostalgia-633x124-nero.png"
+  },
+  {
+    "name": "DISCORADIO",
+    "stream": "http://icstream.rds.radio/disco",
+    "img": "https://www.rdsadvertising.it/wp-content/uploads/2019/10/Logo-Discoradio-1024x576.png"
+  },
+  {
+    "name": "RADIO CANELLI E MONF.TO",
+    "stream": "http://nr5.newradio.it:8533/;",
+    "img": "https://www.phonostar.de/images/auto_created/radiocanelli184x184.png"
+  }
+]
